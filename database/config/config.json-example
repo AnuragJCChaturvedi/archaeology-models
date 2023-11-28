@@ -1,0 +1,8 @@
+{
+  "connection-name": {
+    "username": "",
+    "secret": "",
+    "port": , // integer
+    "database": "{name of database}"
+  },
+}
