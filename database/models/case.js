@@ -61,10 +61,16 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Case.associate = (models) => {
-    Case.belongsTo(models.user, { foreignKey: 'createdBy' });
-    Case.belongsTo(models.user, { foreignKey: 'supervisedBy' });
+    Case.belongsTo(models.user, {
+      foreignKey: 'createdBy',
+      as: 'createdByUser',
+    });
+    Case.belongsTo(models.user, {
+      foreignKey: 'supervisedBy',
+      as: 'supervisedByUser',
+    });
     Case.belongsTo(models.survey, { foreignKey: 'surveyId' });
-    Case.hasMany(models.case, { foreignKey: 'caseId' });
+    Case.hasMany(models.caseMetaData, { foreignKey: 'caseId' });
   };
 
   return Case;
