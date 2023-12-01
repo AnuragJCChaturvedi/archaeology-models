@@ -61,8 +61,14 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   SurveyMetaData.associate = (models) => {
-    SurveyMetaData.belongsTo(models.user, { foreignKey: 'createdBy' });
-    SurveyMetaData.belongsTo(models.user, { foreignKey: 'supervisedBy' });
+    SurveyMetaData.belongsTo(models.user, {
+      foreignKey: 'createdBy',
+      as: 'createdByUser',
+    });
+    SurveyMetaData.belongsTo(models.user, {
+      foreignKey: 'supervisedBy',
+      as: 'supervisedByUser',
+    });
     SurveyMetaData.belongsTo(models.survey, { foreignKey: 'surveyId' });
   };
 
